@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-broccoli-compass",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Ember CLI Broccoli Compass",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "license": "MIT",
   "readmeFile": "README.md",
   "dependencies": {
-    "broccoli-compass": "0.0.8",
+    "broccoli-compass": "0.0.7",
     "broccoli-merge-trees": "^0.1.4"
   }
 }
