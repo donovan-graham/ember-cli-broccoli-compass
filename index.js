@@ -1,6 +1,6 @@
 /* global require, module */
 'use strict';
-var path  = require('path');
+// var path  = require('path');  
 var mergeTrees  = require('broccoli-merge-trees');
 var compileCompass = require('broccoli-compass');
 
@@ -20,11 +20,31 @@ CompassCompilerPlugin.prototype.toTree = function(tree, inputPath, outputPath) {
   var cssDir         = options.cssDir         || outputPath;
   var configFile     = options.configFile     || "config.rb";
 
+  var outputStyle    = options.outputStyle    || 'compressed'; // or expanded
+  var sassDir        = options.sassDir        || inputPath;
+  var imagesDir      = options.imagesDir      || 'images';
+  var fontsDir       = options.fontsDir       || 'fonts';
+  var compassCommand = options.compassCommand || 'compass';
+
+  // var compassOptions = {
+  //   outputStyle: outputStyle,
+  //   require: options.require,
+  //   importPath: options.importPath,
+  //   sassDir: sassDir,
+  //   imagesDir: imagesDir,
+  //   fontsDir: fontsDir,
+  //   cssDir: cssDir,
+  //   compassCommand: compassCommand
+  // };
+
+
   var compassOptions = {
-    sassDir: undefined,  /* overide and ignore the default brocolli-compass behaviour */
-    relativeAssets: undefined,   /* overide and ignore the default brocolli-compass behaviour */
-    config: '"' + path.join("../../", configFile) + '"',   // we need to make this relative to the ./tmp/trees/ directory
-    cssDir: cssDir,     // output dir
+    sassDir: undefined,
+    relativeAssets: undefined,
+    require: options.require,
+    config: '"../../config.rb"', 
+    cssDir: cssDir,
+    compassCommand: compassCommand
   };
 
   tree = mergeTrees([tree, 'public'], {
