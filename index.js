@@ -22,12 +22,12 @@ CompassCompilerPlugin.prototype.toTree = function(tree, inputPath, outputPath) {
   var configFile     = options.configFile     || "config.rb";
 
   var compassOptions = {
-    compassCommand: compassCommand
+    compassCommand: compassCommand,
     sassDir: undefined,
     relativeAssets: undefined,
     require: options.require,
     config: '"' + path.join('../../', configFile) + '"', 
-    cssDir: cssDir,
+    cssDir: cssDir
   };
 
   tree = mergeTrees([tree, 'public'], {
